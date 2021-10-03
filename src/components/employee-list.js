@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import port from "./port"
 
@@ -9,15 +10,17 @@ const Employee = (props) => (
 	<tr>
     <td>{props.employee.name}</td>
     <td>{props.employee.pay}</td>
-    <td><a href="#" onClick={() => { props.delete(props.employee._id) }}>delete</a></td>
+    <td>
+			<span style={divStyle}>
+		 <a href="#" onClick={() => { props.delete(props.employee._id) }}>delete</a>
+			</span>
+		</td>
   </tr>
 )
 
 const divStyle = {
-	float:'right'
+	'white-space':'nowrap'
 };
-
-
 
 const Employee_list = () => {
     var [employees, setEmployees] = useState([]);
@@ -49,11 +52,11 @@ const Employee_list = () => {
 						<div>
 							<i className="bi bi-search p-1"></i>
 							<input className="" placeholder="Search Employee" 
-								type="text" style={divStyle} 
-								onChange={e => setEmployees(temp.filter(i => i.name.includes(e.target.value)))}></input>
+								type="text" 
+								onChange={e => setEmployees(temp.filter(i => i.name.includes(e.target.value)))}/>
 						</div>
 					</div>
-            <table className="table">
+            <table className="table align-items-stretch">
                 <thead className="thead-light">
                     <tr>
                       <th>Name</th>

@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
 			<NavBar/>
-			<div className='container mx-5'>
+			<div className='mx-5'>
 				<br/>
       	<Route path="/" exact render={() => <Employees/>}/>
 				<Route path="/create" render={() => <Create/>}/>
