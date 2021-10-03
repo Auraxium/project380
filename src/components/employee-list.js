@@ -38,7 +38,7 @@ const Employee_list = () => {
 
 		useEffect(() => {
 			axios.get(port)
-			.then(response => {setEmployees(response.data); temp = [...response.data]})
+			.then(res => {setEmployees(res.data); temp = [...res.data]})
 			.catch(e => console.log(e));
 		}, [])
 
