@@ -1,20 +1,13 @@
 import React from 'react'
 import port from "./port"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
-const Employee = (props) => (
-	<tr>
-    <td>{props.employee.name}</td>
-    <td>{props.employee.pay}</td>
-    <td><a href="#" onClick={() => { props.delete(props.employee._id) }}>delete</a></td>
-  </tr>
-)
-
-const Create_employee = (props) => {
+const Edit_employee = (props) => {
 	var [name, setName] = useState('')
 	var [pay, setPay] = useState('')
+
+  const id  = window.location.pathname.substring(6)
 
 	var onSubmit = (e) => {
 		e.preventDefault();
@@ -26,8 +19,8 @@ const Create_employee = (props) => {
 		
 		console.log(emp)
 
-		axios.post(port+'update/'+props.id, emp).then(res => console.log(res.data))
-
+		axios.post(port+'update/'+id, emp).then(res => console.log(res.data))
+		
 		window.location = '/'
 	}
 
@@ -39,10 +32,9 @@ const Create_employee = (props) => {
 		})
 	}, [])
 
-
 	return(
 		<div>
-      <h3>Add Employee</h3>
+      <h3>Edit Employee</h3>
       <form onSubmit={onSubmit}>
         <div className="form-group"> 
           <label>Name: </label>
@@ -65,7 +57,7 @@ const Create_employee = (props) => {
 
         <div className="form-group py-2">
 					
-          <input type="submit" value="Add Employee" className="btn btn-primary" />
+          <input type="submit" value="Update Employee" className="btn btn-primary"/>
         </div>
       </form>
     </div>
@@ -73,4 +65,4 @@ const Create_employee = (props) => {
 	)
 	}
 
-export default Create_employee;
+export default Edit_employee;

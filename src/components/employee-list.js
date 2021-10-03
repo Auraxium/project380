@@ -12,14 +12,14 @@ const Employee = (props) => (
     <td>{props.employee.pay}</td>
     <td>
 			<span style={divStyle}>
-		 <a href="#" onClick={() => { props.delete(props.employee._id) }}>delete</a>
+				<Link to={"/edit/"+props.employee._id}>edit</Link> | <a href="#" onClick={() => { props.delete(props.employee._id) }}>delete</a>
 			</span>
 		</td>
   </tr>
 )
 
-const divStyle = {
-	'white-space':'nowrap'
+const divStyle = { // for no new line
+	'whiteSpace':'nowrap'
 };
 
 const Employee_list = () => {
@@ -74,18 +74,3 @@ const Employee_list = () => {
 	}
 
 export default Employee_list
-
-//const search = (s) => {
-//	if(!s) {
-//		setEmployees([...temp])
-//		return
-//	}
-//	//if(!temp)
-//	//	temp = [...employees]
-//
-//	setEmployees(employees.filter(i => 
-//		i.name.includes(s)
-//	))
-//	employees = [...temp];
-//	//console.log(temp)
-//}

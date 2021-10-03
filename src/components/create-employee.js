@@ -3,15 +3,6 @@ import port from "./port"
 import { useState } from 'react';
 import axios from 'axios';
 
-
-const Employee = (props) => (
-	<tr>
-    <td>{props.employee.name}</td>
-    <td>{props.employee.pay}</td>
-    <td><a href="#" onClick={() => { props.delete(props.employee._id) }}>delete</a></td>
-  </tr>
-)
-
 const Create_employee = () => {
 	var [name, setName] = useState('')
 	var [pay, setPay] = useState('')
