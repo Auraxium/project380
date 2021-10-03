@@ -1,6 +1,16 @@
 import React from 'react'
+import port from "./port"
 import { useState } from 'react';
 import axios from 'axios';
+
+
+const Employee = (props) => (
+	<tr>
+    <td>{props.employee.name}</td>
+    <td>{props.employee.pay}</td>
+    <td><a href="#" onClick={() => { props.delete(props.employee._id) }}>delete</a></td>
+  </tr>
+)
 
 const Create_employee = () => {
 	var [name, setName] = useState('')
@@ -16,10 +26,11 @@ const Create_employee = () => {
 		
 		console.log(emp)
 
-		axios.post('http://localhost:5000/employees/create', emp).then(res => console.log(res.data))
+		axios.post(port+'create', emp).then(res => console.log(res.data))
 
 		window.location = '/'
 	}
+
 
 	return(
 		<div>
@@ -52,6 +63,6 @@ const Create_employee = () => {
     </div>
 
 	)
-}
+	}
 
 export default Create_employee;

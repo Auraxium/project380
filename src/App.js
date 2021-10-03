@@ -9,8 +9,8 @@ import NavBar from "./components/nav-bar"
 function App() {
   return (
     <Router>
-			<div className='container'>
-				<NavBar/>
+			<NavBar/>
+			<div className='container mx-5'>
 				<br/>
       	<Route path="/" exact render={() => <Employees/>}/>
 				<Route path="/create" render={() => <Create/>}/>
